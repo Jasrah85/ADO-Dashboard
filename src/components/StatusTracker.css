@@ -134,3 +134,36 @@
 textarea {
   resize: vertical;
 }
+.toggle-details-btn {
+  background: none;
+  border: none;
+  color: #0078d4;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 5px;
+  padding: 0;
+}
+
+.description-box {
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+.tracker-controls {
+  display: flex;
+  gap: 10px;
+  margin: 8px 0;
+}
+
+.toggle-details-btn {
+  background: none;
+  border: none;
+  color: #0078d4;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 0;
+}
+.description-box {
+  font-size: 0.95em;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+}

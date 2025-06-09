@@ -35,6 +35,7 @@ export async function getFormRequests() {
           'System.Tags',
           'System.CreatedDate',
           'Custom.KeyStakeholders',
+          'System.Description',
         ],
       }),
     }

@@ -33,9 +33,12 @@ function App() {
             RequestDate: item.fields['System.CreatedDate'] || new Date().toISOString(),
             WorkItemID: item.id,
             KeyStakeholders: item.fields['Custom.KeyStakeholders'] || '',
+            Description: item.fields['System.Description'] || '',
             Tags: tags,
-            Urgency: urgency, // ✅ added
+            Urgency: urgency
           };
+          
+
         });
 
         setAllRequests(transformed);
@@ -182,14 +185,17 @@ function App() {
 
       <div style={{ padding: '0 30px', maxWidth: 1000, margin: 'auto' }}>
         {selectedRequest && (
-          <StatusTracker
-            title={selectedRequest.Title}
-            state={selectedRequest.WorkItemState}
-            assignee={selectedRequest.Assignee}
-            id={selectedRequest.WorkItemID}
-            latestComment={selectedRequest.LatestComment}
-            allComments={selectedRequest.AllComments}
-          />
+        <StatusTracker
+          title={selectedRequest.Title}
+          state={selectedRequest.WorkItemState}
+          assignee={selectedRequest.Assignee}
+          id={selectedRequest.WorkItemID}
+          latestComment={selectedRequest.LatestComment}
+          allComments={selectedRequest.AllComments}
+          urgency={selectedRequest.Urgency}
+          description={selectedRequest.Description}
+          requestor={selectedRequest.KeyStakeholders}
+        />
         )}
 
         <h3 style={{ marginBottom: '0.5rem' }}>Matching Requests</h3>

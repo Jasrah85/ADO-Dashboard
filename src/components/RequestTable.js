@@ -111,6 +111,7 @@ function RequestTable({ data, onSelect, selectedId }) {
               <th onClick={() => toggleSort('Title')}>Title {sortKey === 'Title' ? (sortAsc ? '↑' : '↓') : ''}</th>
               <th onClick={() => toggleSort('WorkItemState')}>Status {sortKey === 'WorkItemState' ? (sortAsc ? '↑' : '↓') : ''}</th>
               <th onClick={() => toggleSort('Assignee')}>Assignee {sortKey === 'Assignee' ? (sortAsc ? '↑' : '↓') : ''}</th>
+              <th onClick={() => toggleSort('Requestor')}>Requestor {sortKey === 'Requestor' ? (sortAsc ? '↑' : '↓') : ''}</th>
               <th onClick={() => toggleSort('Urgency')}>Urgency {sortKey === 'Urgency' ? (sortAsc ? '↑' : '↓') : ''}
               </th>
               <th onClick={() => toggleSort('RequestDate')}>Requested Date {sortKey === 'RequestDate' ? (sortAsc ? '↑' : '↓') : ''}</th>
@@ -128,6 +129,7 @@ function RequestTable({ data, onSelect, selectedId }) {
                   <td>{item.Title}</td>
                   <td>{item.WorkItemState}</td>
                   <td>{item.Assignee}</td>
+                  <td>{item.KeyStakeholders}</td>
                   <td>{item.Urgency}</td>
                   <td>{formatDate(item.RequestDate)}</td>
                 </tr>

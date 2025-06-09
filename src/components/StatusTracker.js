@@ -3,12 +3,18 @@ import './StatusTracker.css';
 import { useState, useEffect } from 'react';
 import { postComment, getComments } from '../api/azureApi';
 
-function StatusTracker({ state, title, assignee, id }) {
+function StatusTracker({ state, title, assignee, id, latestComment, allComments, urgency, description, requestor }) {
   const [expanded, setExpanded] = useState(false);
   const currentIndex = STATUS_STAGES.findIndex(stage => stage.key === state);
   const [commentText, setCommentText] = useState('');
   const [posting, setPosting] = useState(false);
   const [comments, setComments] = useState([]);
+  const [showDetails, setShowDetails] = useState(false);
+
+  useEffect(() => {
+      setComments([]);
+    }, [id]);
+
 
   // 🔍 Load comments once when expanded
   useEffect(() => {
@@ -39,8 +45,6 @@ function StatusTracker({ state, title, assignee, id }) {
     <div className="tracker-wrapper">
       <div className="tracker-header">
         <h3>{title}</h3>
-        <p><strong>Assigned to:</strong> {assignee || 'Unassigned'}</p>
-        <p><strong>Status:</strong> {STATUS_STAGES[currentIndex]?.description || state}</p>
         <div className="workitem-id">Work Item ID: {id}</div>
       </div>
 
@@ -62,11 +66,26 @@ function StatusTracker({ state, title, assignee, id }) {
           );
         })}
       </div>
+        <p><strong>Assigned to:</strong> {assignee || 'Unassigned'}</p>
+        <p><strong>Status:</strong> {STATUS_STAGES[currentIndex]?.description || state}</p>
 
-      <div className="comments-section">
-        <button onClick={() => setExpanded(!expanded)} className="comment-toggle">
+      <div className="comments-section"><div className="tracker-controls">
+        <button onClick={() => setShowDetails(prev => !prev)} className="toggle-details-btn">
+          {showDetails ? '▲ Hide Request Details' : '▼ Show Request Details'}
+        </button>
+        <button onClick={() => setExpanded(prev => !prev)} className="toggle-details-btn">
           {expanded ? '▲ Hide Updates' : '▼ Show Updates'}
         </button>
+      </div>
+      {showDetails && description && (
+  <div
+    className="description-box"
+    style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#f9f9f9', borderRadius: '6px' }}
+    dangerouslySetInnerHTML={{ __html: description }}
+  />
+)}
+
+
 
         {expanded && (
           <>
