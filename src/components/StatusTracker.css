@@ -1,0 +1,136 @@
+.tracker-wrapper {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 16px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  }
+  
+  .step-circle.completed {
+    background-color: #43d9ad;
+    color: white;
+    animation: bounceIn 0.3s ease;
+  }
+  
+  .step-circle.current {
+    background-color: #1e1e2f;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .step-line.filled {
+    background-color: #43d9ad;
+    animation: fillLine 0.5s ease forwards;
+  }
+  
+  
+  .tracker-header {
+    margin-bottom: 15px;
+  }
+  
+  .progress-tracker {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+  }
+  
+  .step-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  .step-line {
+    height: 4px;
+    background-color: #e0e0e0;
+    position: absolute;
+    top: 14px;
+    left: 50%;
+    right: -50%;
+    z-index: 1;
+    transition: background-color 0.4s ease;
+  }
+  
+  @keyframes fillLine {
+    from {
+      background-color: #e0e0e0;
+      width: 0%;
+    }
+    to {
+      background-color: #4caf50;
+      width: 100%;
+    }
+  }
+  
+  .step-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    z-index: 2;
+    transition: background-color 0.4s, transform 0.3s ease;
+  }
+  
+  
+  @keyframes bounceIn {
+    0% {
+      transform: scale(0.7);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  .tracker-header {
+  position: relative;
+  padding-right: 150px;
+}
+
+.workitem-id {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #666;
+}
+.comment-toggle {
+  background: none;
+  border: none;
+  color: #0078d4;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 1rem;
+  padding: 0;
+}
+
+.comment-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 0.5rem;
+}
+
+.comment-list li {
+  background: #f5f5f5;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+.comment-list {
+  margin-bottom: 1rem;
+}
+
+textarea {
+  resize: vertical;
+}

@@ -1,0 +1,77 @@
+.table-wrapper {
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    padding: 20px;
+  }
+  
+  .table-controls {
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+  
+  .table-controls select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    margin-left: 10px;
+  }
+  
+  .request-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  
+  .request-table th,
+  .request-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .request-table th {
+    background-color: #f8f9fb;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .request-table tr:hover {
+    background-color: #f1f8ff;
+  }
+  
+  .selected-row {
+    background-color: #e0f7fa !important;
+    border-left: 4px solid #43d9ad;
+  }
+  .request-table-scroll-container {
+  max-height: 35vh;
+  overflow-y: auto;
+  resize: vertical;
+  border: 1px solid #ccc;
+  padding: 0;
+  border-radius: 6px;
+  min-height: 200px;
+}
+.request-table-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+.request-table-scroll-container::-webkit-scrollbar-thumb {
+  background: #aaa;
+  border-radius: 3px;
+}
+.request-table tbody tr {
+  transition: background-color 0.2s ease;
+}
+
+.request-table tbody tr:hover {
+  background-color: #f0f4f8;
+  cursor: pointer;
+}
+
+.request-table tbody tr.selected-row {
+  background-color: #dbeafe !important;
+  font-weight: bold;
+}
