@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# Request Tracker Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A React-based dashboard that allows stakeholders to view and interact with Azure DevOps work items submitted through a Microsoft Form, with filtering, tracking, and commenting features.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- 📋 Displays requests created from an MS Form and stored in Azure DevOps
+- 🎯 Filters by requestor, assignee, and keyword (title or work item ID)
+- 🔄 Comments system with real-time updates and author attribution
+- 🔍 Highlights changes to priority between requestor and team adjustments
+- 🧭 Status tracker showing request progress through custom stages
+- 💬 Toggleable request details and discussion threads
+- ✅ Hide/show closed work items with resizable table view
+- 💡 Maintains filter state across sessions via `localStorage`
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🗂 Project Structure
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- `App.js`: Main logic, request fetching, transformation, and routing:contentReference[oaicite:0]{index=0}
+- `StatusTracker.js`: Visual status display and comment section:contentReference[oaicite:1]{index=1}
+- `RequestTable.js`: Filterable and sortable list of requests:contentReference[oaicite:2]{index=2}
+- `Navbar.js`: Top-level filters and UI controls:contentReference[oaicite:3]{index=3}
+- `azureApi.js`: Azure DevOps API calls using a Personal Access Token:contentReference[oaicite:4]{index=4}
+- `statusStages.js`: Definitions of work item state flow:contentReference[oaicite:5]{index=5}
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🛠 Setup
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js and npm installed
+- An Azure DevOps PAT with read/write access to Work Items
+- A shared WIQL query in ADO for form-tagged requests
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+npm install
