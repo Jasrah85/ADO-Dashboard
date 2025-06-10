@@ -167,3 +167,23 @@ textarea {
   line-height: 1.5;
   border: 1px solid #ccc;
 }
+.send-comment-btn {
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  margin-top: 5px;
+}
+
+.send-comment-btn:hover {
+  background-color: #005fa3;
+}
+
+.send-comment-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}

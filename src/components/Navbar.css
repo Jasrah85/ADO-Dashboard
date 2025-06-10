@@ -45,3 +45,75 @@
   border: 1px solid #ccc;
   font-size: 0.9em;
 }
+.navbar-modern {
+  background-color: #222;
+  color: white;
+  padding: 10px 20px;
+}
+
+.navbar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  display: none;
+  cursor: pointer;
+}
+
+.navbar-filters {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.navbar-filters select,
+.navbar-filters input,
+.navbar-filters button {
+  padding: 6px;
+  border-radius: 4px;
+  border: none;
+}
+
+.clear-button {
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-filters {
+    display: none;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+
+  .navbar-filters.open {
+    display: flex;
+  }
+
+  .navbar-filters select,
+  .navbar-filters input,
+  .navbar-filters button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+}

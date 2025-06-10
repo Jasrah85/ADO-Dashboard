@@ -89,21 +89,21 @@ function RequestTable({ data, onSelect, selectedId }) {
           </select>
         </label>
 
-        <label style={{ marginLeft: '1rem' }}>
+        <label className="hide-closed-label">
           <input
             type="checkbox"
             checked={hideClosed}
             onChange={() => setHideClosed(prev => !prev)}
-            style={{ marginRight: '5px' }}
           />
           Hide Closed
         </label>
-      </div>
       {hideClosed && (
-        <p style={{ fontStyle: 'italic', color: '#777' }}>
-          Closed items are currently hidden.
-        </p>
+        <span style={{ fontStyle: 'italic', color: '#777', float: 'right' }}>
+          Closed work items are currently hidden.
+        </span>
       )}
+
+      </div>
       <div className="request-table-scroll-container">
         <table className="request-table">
           <thead>

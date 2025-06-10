@@ -75,3 +75,23 @@
   background-color: #dbeafe !important;
   font-weight: bold;
 }
+.table-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hide-closed-label {
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+}
+
+.hide-closed-label input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+}

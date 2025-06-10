@@ -3,13 +3,27 @@ import './StatusTracker.css';
 import { useState, useEffect } from 'react';
 import { postComment, getComments } from '../api/azureApi';
 
-function StatusTracker({ state, title, assignee, id, latestComment, allComments, urgency, description, requestor }) {
+function StatusTracker({
+  state,
+  title,
+  assignee,
+  id,
+  latestComment,
+  allComments,
+  urgency,
+  description,
+  requestor,
+  requestedPriority,
+  priorityChanged
+}) {
+
   const [expanded, setExpanded] = useState(false);
   const currentIndex = STATUS_STAGES.findIndex(stage => stage.key === state);
   const [commentText, setCommentText] = useState('');
   const [posting, setPosting] = useState(false);
   const [comments, setComments] = useState([]);
   const [showDetails, setShowDetails] = useState(false);
+  
 
   useEffect(() => {
       setComments([]);
@@ -67,6 +81,17 @@ function StatusTracker({ state, title, assignee, id, latestComment, allComments,
         })}
       </div>
         <p><strong>Assigned to:</strong> {assignee || 'Unassigned'}</p>
+        <p>
+          <strong>Priority:</strong> {urgency}
+          {priorityChanged && requestedPriority && (
+            <span style={{ color: 'red', fontWeight: 'bold', marginLeft: '8px' }}>
+              (Updated from: {requestedPriority})
+            </span>
+          )}
+        </p>
+
+
+
         <p><strong>Status:</strong> {STATUS_STAGES[currentIndex]?.description || state}</p>
 
       <div className="comments-section"><div className="tracker-controls">
@@ -136,13 +161,18 @@ function StatusTracker({ state, title, assignee, id, latestComment, allComments,
               }}
             >
               <textarea
+                id='commentText'
                 value={commentText}
                 onChange={e => setCommentText(e.target.value)}
                 rows={3}
                 placeholder="Write a comment to post to the ADO board..."
                 style={{ width: '100%', marginTop: '10px', padding: '6px', borderRadius: '6px' }}
               />
-              <button type="submit" disabled={posting || !commentText.trim()} style={{ marginTop: '5px' }}>
+              <button
+                type="submit"
+                disabled={posting || !commentText.trim()}
+                className="send-comment-btn"
+              >
                 {posting ? 'Sending...' : 'Send Comment'}
               </button>
             </form>

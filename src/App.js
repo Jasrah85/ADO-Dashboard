@@ -25,6 +25,9 @@ function App() {
         const transformed = rawItems.map(item => {
           const tags = item.fields['System.Tags'] || '';
           const urgency = extractUrgency(tags);
+          const requestedPriority = extractRequestedPriority(item.fields['System.Description'] || '');
+          const priorityChanged = urgency !== requestedPriority && requestedPriority !== null;
+
 
           return {
             Title: item.fields['System.Title'],
@@ -35,7 +38,9 @@ function App() {
             KeyStakeholders: item.fields['Custom.KeyStakeholders'] || '',
             Description: item.fields['System.Description'] || '',
             Tags: tags,
-            Urgency: urgency
+            Urgency: urgency,
+            RequestedPriority: requestedPriority,
+            PriorityChanged: priorityChanged
           };
           
 
@@ -142,10 +147,26 @@ function App() {
     const tagList = tags.toLowerCase();
     if (tagList.includes('highest priority')) return 'Critical Issue';
     if (tagList.includes('high priority')) return 'High Priority Fix';
-    if (tagList.includes('medium priority')) return 'Medium Priority';
+    if (tagList.includes('medium priority')) return 'Medium Priority Task';
     if (tagList.includes('low priority')) return 'Low Priority Enhancement';
     return 'Unspecified';
   }
+
+    function extractRequestedPriority(description) {
+      if (!description) return null;
+
+      const match = description.match(/Requested Priority Level:\s*(.*?)(<br>|<\/p>|<\/div>|$)/i);
+      if (!match) return null;
+
+      // Clean out any HTML tags
+      const raw = match[1].trim();
+      const div = document.createElement('div');
+      div.innerHTML = raw;
+      return div.textContent || div.innerText || raw;
+    }
+
+
+
   function parseRequestorLabel(fullString) {
     const match = fullString.match(/^(.+?)\s*\[(.+?)\]$/); // namePart [email]
     if (!match) return fullString;
@@ -195,19 +216,21 @@ function App() {
           urgency={selectedRequest.Urgency}
           description={selectedRequest.Description}
           requestor={selectedRequest.KeyStakeholders}
+          requestedPriority={selectedRequest.RequestedPriority}
+          priorityChanged={selectedRequest.PriorityChanged}
         />
         )}
 
         <h3 style={{ marginBottom: '0.5rem' }}>Matching Requests</h3>
-        <button onClick={clearFilters} style={{ marginBottom: '1rem' }}  className="clear-button">
-          Clear All Filters
-        </button>
-
         <RequestTable
           data={results}
           onSelect={setSelectedRequest}
           selectedId={selectedRequest?.WorkItemID}
         />
+        <button onClick={clearFilters} style={{ margin: '1rem' }}  className="clear-button">
+          Clear All Filters
+        </button>
+
       </div>
     </div>
   );
